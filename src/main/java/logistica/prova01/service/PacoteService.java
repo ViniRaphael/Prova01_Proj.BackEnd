@@ -23,5 +23,10 @@ public class PacoteService {
     public void removerPacote(String id) {
         pacoteRepository.deleteById(id);
     }
+
+    public Iterable<Pacote> listarPacotes() {
+        return pacoteRepository.findAll();
+    }
+    
 }
 

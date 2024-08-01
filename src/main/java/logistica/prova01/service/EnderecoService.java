@@ -20,5 +20,10 @@ public class EnderecoService {
     public Optional<Endereco> obterEndereco(String cep) {
         return enderecoRepository.findById(cep);
     }
+
+    public Iterable<Endereco> listarEnderecos() {
+        return enderecoRepository.findAll();
+    }
+    
 }
 
