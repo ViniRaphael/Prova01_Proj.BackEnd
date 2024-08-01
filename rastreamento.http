@@ -1,0 +1,14 @@
+POST http://localhost:8080/rastreamentos
+Content-Type: application/json
+
+{
+  "dataHora": "2024-08-01T10:00:00Z",
+  "status": "em trânsito",
+  "localizacao": "Centro de Distribuição - CD",
+  "pacote": {
+    "id": "223"
+  }
+}
+
+GET http://localhost:8080/rastreamentos/123
+Accept: application/json

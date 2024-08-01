@@ -1,0 +1,16 @@
+GET http://localhost:8080/enderecos
+Accept: application/json
+
+POST http://localhost:8080/enderecos
+Content-Type: application/json
+
+{
+  "cep": "38980-999",
+  "rua": "Rua Coronel Alves",
+  "numero": "199",
+  "cidade": "Itabuna",
+  "estado": "BA"
+}
+
+GET http://localhost:8080/enderecos/12345-678
+Accept: application/json

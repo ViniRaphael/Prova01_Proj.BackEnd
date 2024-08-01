@@ -1,0 +1,41 @@
+
+GET http://localhost:8080/pacotes
+Accept: application/json
+
+
+POST http://localhost:8080/pacotes
+Content-Type: application/json
+
+{
+  "id": "2306",
+  "destinatario": "Vinicius",
+  "endereco": {
+    "cep": "38401-678",
+    "rua": "Rua João Vitorino",
+    "numero": "100",
+    "cidade": "Uberlandia",
+    "estado": "MG"
+  },
+  "status": "pendente"
+}
+
+GET http://localhost:8080/pacotes/123
+Accept: application/json
+
+PUT http://localhost:8080/pacotes/123
+Content-Type: application/json
+
+{
+  "id": "237",
+  "destinatario": "Carlos Rangel",
+  "endereco": {
+    "cep": "38380-970",
+    "rua": "Rua da casa do Carlos",
+    "numero": "299",
+    "cidade": "Canapolis",
+    "estado": "MG"
+  },
+  "status": "em trânsito"
+}
+
+DELETE http://localhost:8080/pacotes/123
