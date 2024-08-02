@@ -1,30 +1,29 @@
 package logistica.prova01.model;
 
+import jakarta.persistence.*;
+
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 
 @Entity
 public class Pacote {
 
     @Id
     private String id;
+
     private String destinatario;
 
     @ManyToOne
-    @JoinColumn(name = "endereco_cep")
+    @JoinColumn(name = "endereco_id")
     private Endereco endereco;
 
     private String status;
 
-    @OneToMany(mappedBy = "pacote", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pacote", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Rastreamento> rastreamentos = new ArrayList<>();
+
+    // Getters e Setters
 
     public void atualizarStatus(String novoStatus, Date dataHora, String localizacao) {
         this.status = novoStatus;
@@ -33,31 +32,19 @@ public class Pacote {
         rastreamento.setDataHora(dataHora);
         rastreamento.setLocalizacao(localizacao);
         rastreamento.setPacote(this);
-        this.rastreamentos.add(rastreamento);
+        rastreamentos.add(rastreamento);
     }
 
     public String consultarInformacoes() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Pacote ID: ").append(id).append("\n");
-        sb.append("Destinatário: ").append(destinatario).append("\n");
-        sb.append("Endereço: ").append(endereco.getEnderecoCompleto()).append("\n");
-        sb.append("Status Atual: ").append(status).append("\n");
-        sb.append("Rastreamento Histórico:\n");
+        StringBuilder info = new StringBuilder("ID: " + id + ", Destinatário: " + destinatario + ", Status: " + status);
         for (Rastreamento r : rastreamentos) {
-            sb.append(r.getResumo()).append("\n");
+            info.append("\n").append(r.getResumo());
         }
-        return sb.toString();
+        return info.toString();
     }
 
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
-    public String getDestinatario() { return destinatario; }
-    public void setDestinatario(String destinatario) { this.destinatario = destinatario; }
-    public Endereco getEndereco() { return endereco; }
-    public void setEndereco(Endereco endereco) { this.endereco = endereco; }
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
-    public List<Rastreamento> getRastreamentos() { return rastreamentos; }
-    public void setRastreamentos(List<Rastreamento> rastreamentos) { this.rastreamentos = rastreamentos; }
+    public void setId(String id2) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setId'");
+    }
 }
-

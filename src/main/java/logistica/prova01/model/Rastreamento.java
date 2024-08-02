@@ -1,11 +1,7 @@
 package logistica.prova01.model;
 
+import jakarta.persistence.*;
 import java.util.Date;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
 @Entity
 public class Rastreamento {
@@ -13,25 +9,41 @@ public class Rastreamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dataHora;
+
     private String status;
+
     private String localizacao;
 
+    @ManyToOne
+    @JoinColumn(name = "pacote_id")
+    private Pacote pacote;
+
+    // Getters e Setters
+
     public String getResumo() {
-        return String.format("Status: %s, Localização: %s, Data e Hora: %s", status, localizacao, dataHora.toString());
+        return "Status: " + status + ", Localização: " + localizacao + ", Data e Hora: " + dataHora;
     }
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-    public Date getDataHora() { return dataHora; }
-    public void setDataHora(Date dataHora) { this.dataHora = dataHora; }
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
-    public String getLocalizacao() { return localizacao; }
-    public void setLocalizacao(String localizacao) { this.localizacao = localizacao; }
+    public void setStatus(String novoStatus) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setStatus'");
+    }
 
-    public void setPacote(Pacote pacote) {
+    public void setDataHora(java.sql.Date dataHora2) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setDataHora'");
+    }
+
+    public void setLocalizacao(String localizacao2) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setLocalizacao'");
+    }
+
+    public void setPacote(Pacote pacote2) {
+        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setPacote'");
     }
 }
-

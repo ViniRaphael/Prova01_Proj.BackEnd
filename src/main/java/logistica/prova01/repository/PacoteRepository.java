@@ -1,8 +1,7 @@
 package logistica.prova01.repository;
 
-import logistica.prova01.model.*;
-import org.springframework.data.jpa.repository.JpaRepository;
+import logistica.prova01.model.Pacote;
+import org.springframework.data.repository.CrudRepository;
 
-public interface PacoteRepository extends JpaRepository<Pacote, String> {
+public interface PacoteRepository extends CrudRepository<Pacote, String> {
 }
-

@@ -24,7 +24,7 @@ public class RastreamentoController {
 
     @GetMapping("/{pacoteId}")
     public ResponseEntity<List<Rastreamento>> obterRastreamentos(@PathVariable Long pacoteId) {
-        List<Rastreamento> rastreamentos = rastreamentoService.obterRastreamentos(pacoteId);
+        List<Rastreamento> rastreamentos = (List<Rastreamento>) rastreamentoService.obterRastreamentos(pacoteId);
         if (rastreamentos.isEmpty()) {
             return ResponseEntity.notFound().build();
         }

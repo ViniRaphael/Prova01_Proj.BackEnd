@@ -5,7 +5,6 @@ import logistica.prova01.repository.RastreamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 public class RastreamentoService {
@@ -17,7 +16,7 @@ public class RastreamentoService {
         return rastreamentoRepository.save(rastreamento);
     }
 
-    public List<Rastreamento> obterRastreamentos(Long pacoteId) {
+    public Iterable<Rastreamento> obterRastreamentos(Long pacoteId) {
         return rastreamentoRepository.findAll();
     }
 }
